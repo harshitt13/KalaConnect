@@ -1,49 +1,58 @@
-
-
-import { useState } from "react"
-import { X, Wand2, Loader2 } from "lucide-react"
+import { useState } from "react";
+import { X, Wand2, Loader2 } from "lucide-react";
 
 const AddProductModal = ({ onClose, onAddProduct }) => {
-  const [craftName, setCraftName] = useState("")
-  const [keyMaterials, setKeyMaterials] = useState("")
-  const [isGenerating, setIsGenerating] = useState(false)
-  const [generatedContent, setGeneratedContent] = useState(null)
-  const [productTitle, setProductTitle] = useState("")
-  const [productStory, setProductStory] = useState("")
-  const [productDescription, setProductDescription] = useState("")
-  const [price, setPrice] = useState("")
-  const [image, setImage] = useState(null)
+  const [craftName, setCraftName] = useState("");
+  const [keyMaterials, setKeyMaterials] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedContent, setGeneratedContent] = useState(null);
+  const [productTitle, setProductTitle] = useState("");
+  const [productStory, setProductStory] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState(null);
 
   const generateAIContent = async () => {
     if (!craftName.trim() || !keyMaterials.trim()) {
-      alert("Please fill in both Craft Name and Key Materials before generating content.")
-      return
+      alert(
+        "Please fill in both Craft Name and Key Materials before generating content."
+      );
+      return;
     }
 
-    setIsGenerating(true)
+    setIsGenerating(true);
 
     // Simulate AI generation with realistic delay
-    await new Promise((resolve) => setTimeout(resolve, 2500))
+    await new Promise((resolve) => setTimeout(resolve, 2500));
 
     // Generate realistic content based on inputs
     const aiContent = {
       title: generateTitle(craftName, keyMaterials),
       story: generateStory(craftName, keyMaterials),
       description: generateDescription(craftName, keyMaterials),
-    }
+    };
 
-    setGeneratedContent(aiContent)
-    setProductTitle(aiContent.title)
-    setProductStory(aiContent.story)
-    setProductDescription(aiContent.description)
-    setIsGenerating(false)
-  }
+    setGeneratedContent(aiContent);
+    setProductTitle(aiContent.title);
+    setProductStory(aiContent.story);
+    setProductDescription(aiContent.description);
+    setIsGenerating(false);
+  };
 
   const generateTitle = (craft, materials) => {
-    const adjectives = ["Handcrafted", "Artisan", "Premium", "Elegant", "Traditional", "Unique", "Exquisite"]
-    const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)]
-    return `${randomAdjective} ${craft}`
-  }
+    const adjectives = [
+      "Handcrafted",
+      "Artisan",
+      "Premium",
+      "Elegant",
+      "Traditional",
+      "Unique",
+      "Exquisite",
+    ];
+    const randomAdjective =
+      adjectives[Math.floor(Math.random() * adjectives.length)];
+    return `${randomAdjective} ${craft}`;
+  };
 
   const generateStory = (craft, materials) => {
     const stories = [
@@ -52,9 +61,9 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
       `Inspired by ancient traditions and modern aesthetics, this ${craft.toLowerCase()} showcases the natural beauty of ${materials.toLowerCase()}. Every piece tells a unique story, reflecting the time-honored methods that have been refined over years of practice. The creation process is both meditative and purposeful, resulting in a truly special handmade item.`,
 
       `Born from a deep appreciation for traditional crafts, this ${craft.toLowerCase()} combines the finest ${materials.toLowerCase()} with skilled artisanship. Each piece is individually crafted, making it one-of-a-kind. The process involves careful selection of materials, precise techniques, and a commitment to preserving cultural heritage through contemporary design.`,
-    ]
-    return stories[Math.floor(Math.random() * stories.length)]
-  }
+    ];
+    return stories[Math.floor(Math.random() * stories.length)];
+  };
 
   const generateDescription = (craft, materials) => {
     const descriptions = [
@@ -63,16 +72,21 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
       `Featuring high-quality ${materials.toLowerCase()}, this ${craft.toLowerCase()} exemplifies superior craftsmanship and attention to detail. The creation process involves traditional techniques combined with modern quality standards. Each piece is carefully finished to highlight the natural beauty of the materials while ensuring longevity and functionality.`,
 
       `This stunning ${craft.toLowerCase()} showcases the versatility and beauty of ${materials.toLowerCase()}. Created using time-tested methods, each piece reflects the artisan's dedication to quality and authenticity. The careful selection of materials and precise execution result in a product that is both functional and aesthetically pleasing, perfect for discerning customers who value handmade excellence.`,
-    ]
-    return descriptions[Math.floor(Math.random() * descriptions.length)]
-  }
+    ];
+    return descriptions[Math.floor(Math.random() * descriptions.length)];
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!productTitle.trim() || !productStory.trim() || !productDescription.trim() || !price) {
-      alert("Please fill in all required fields.")
-      return
+    if (
+      !productTitle.trim() ||
+      !productStory.trim() ||
+      !productDescription.trim() ||
+      !price
+    ) {
+      alert("Please fill in all required fields.");
+      return;
     }
 
     const newProduct = {
@@ -81,24 +95,29 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
       description: productDescription.trim(),
       price: Number.parseFloat(price),
       image: image ? URL.createObjectURL(image) : null,
-    }
+    };
 
-    onAddProduct(newProduct)
-  }
+    onAddProduct(newProduct);
+  };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     if (file) {
-      setImage(file)
+      setImage(file);
     }
-  }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-gray-900">Add New Product</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <h2 className="text-xl font-semibold text-gray-900">
+            Add New Product
+          </h2>
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600"
+          >
             <X className="h-6 w-6" />
           </button>
         </div>
@@ -107,7 +126,10 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
           {/* Initial Inputs */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="craftName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="craftName"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Craft Name *
               </label>
               <input
@@ -122,7 +144,10 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
             </div>
 
             <div>
-              <label htmlFor="keyMaterials" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="keyMaterials"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Key Materials *
               </label>
               <input
@@ -142,7 +167,9 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
             <button
               type="button"
               onClick={generateAIContent}
-              disabled={isGenerating || !craftName.trim() || !keyMaterials.trim()}
+              disabled={
+                isGenerating || !craftName.trim() || !keyMaterials.trim()
+              }
               className="btn-primary text-lg px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed flex items-center mx-auto"
             >
               {isGenerating ? (
@@ -158,17 +185,26 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
               )}
             </button>
             <p className="text-sm text-gray-500 mt-2">
-              Fill in the craft name and materials above, then click to generate product details
+              Fill in the craft name and materials above, then click to generate
+              product details
             </p>
           </div>
 
           {/* Generated/Editable Fields */}
-          {(generatedContent || productTitle || productStory || productDescription) && (
+          {(generatedContent ||
+            productTitle ||
+            productStory ||
+            productDescription) && (
             <div className="space-y-4 border-t pt-6">
-              <h3 className="text-lg font-semibold text-gray-900">Product Details</h3>
+              <h3 className="text-lg font-semibold text-gray-900">
+                Product Details
+              </h3>
 
               <div>
-                <label htmlFor="productTitle" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="productTitle"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Product Title *
                 </label>
                 <input
@@ -183,7 +219,10 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
               </div>
 
               <div>
-                <label htmlFor="productStory" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="productStory"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Product Story *
                 </label>
                 <textarea
@@ -198,7 +237,10 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
               </div>
 
               <div>
-                <label htmlFor="productDescription" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="productDescription"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Product Description *
                 </label>
                 <textarea
@@ -217,7 +259,10 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
           {/* Final Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-6">
             <div>
-              <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Price ($) *
               </label>
               <input
@@ -234,7 +279,10 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
             </div>
 
             <div>
-              <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="image"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Product Image
               </label>
               <input
@@ -259,7 +307,7 @@ const AddProductModal = ({ onClose, onAddProduct }) => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AddProductModal
+export default AddProductModal;

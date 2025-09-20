@@ -1,16 +1,24 @@
+"use client"
 
-
-import { useState } from "react"
-import { Palette, ShoppingBag, Store, ArrowRight, Users, Sparkles, TrendingUp } from "lucide-react"
+import { useState } from "react";
+import {
+  Palette,
+  ShoppingBag,
+  Store,
+  ArrowRight,
+  Users,
+  Sparkles,
+  TrendingUp,
+} from "lucide-react";
 
 const RoleSelection = ({ userName, onRoleSelect }) => {
-  const [selectedRole, setSelectedRole] = useState("")
+  const [selectedRole, setSelectedRole] = useState("");
 
   const handleContinue = () => {
     if (selectedRole) {
-      onRoleSelect(selectedRole)
+      onRoleSelect(selectedRole);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -18,11 +26,16 @@ const RoleSelection = ({ userName, onRoleSelect }) => {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
             <Palette className="h-10 w-10 text-primary mr-3" />
-            <h1 className="text-4xl font-bold text-foreground">KalaConnect AI</h1>
+            <h1 className="text-4xl font-bold text-foreground">
+              KalaConnect AI
+            </h1>
           </div>
-          <h2 className="text-3xl font-bold text-foreground mb-4">Welcome, {userName}!</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            Welcome, {userName}!
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose your role to get started with our AI-powered marketplace for local artisans
+            Choose your role to get started with our AI-powered marketplace for
+            local artisans
           </p>
         </div>
 
@@ -40,9 +53,12 @@ const RoleSelection = ({ userName, onRoleSelect }) => {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
                 <ShoppingBag className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">I'm a Buyer</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                I'm a Buyer
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Discover unique handcrafted items from talented local artisans around the world
+                Discover unique handcrafted items from talented local artisans
+                around the world
               </p>
 
               <div className="space-y-3 text-left">
@@ -75,9 +91,12 @@ const RoleSelection = ({ userName, onRoleSelect }) => {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
                 <Store className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">I'm a Seller</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                I'm a Seller
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Showcase your crafts to the world with AI-powered tools to grow your business
+                Showcase your crafts to the world with AI-powered tools to grow
+                your business
               </p>
 
               <div className="space-y-3 text-left">
@@ -110,7 +129,7 @@ const RoleSelection = ({ userName, onRoleSelect }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RoleSelection
+export default RoleSelection;

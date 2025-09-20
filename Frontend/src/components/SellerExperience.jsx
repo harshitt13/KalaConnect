@@ -1,6 +1,6 @@
+"use client"
 
-
-import { useState } from "react"
+import { useState } from "react";
 import {
   Plus,
   Package,
@@ -13,7 +13,7 @@ import {
   MessageCircle,
   TrendingUp,
   DollarSign,
-} from "lucide-react"
+} from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -27,12 +27,12 @@ import {
   PieChart,
   Pie,
   Cell,
-} from "recharts"
-import AddProductModal from "./AddProductModal"
+} from "recharts";
+import AddProductModal from "./AddProductModal";
 
 const SellerExperience = ({ sellerName }) => {
-  const [activeTab, setActiveTab] = useState("dashboard")
-  const [showAddModal, setShowAddModal] = useState(false)
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [showAddModal, setShowAddModal] = useState(false);
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -60,7 +60,7 @@ const SellerExperience = ({ sellerName }) => {
       sales: 8,
       revenue: 1248,
     },
-  ])
+  ]);
 
   const [orders, setOrders] = useState([
     {
@@ -96,16 +96,17 @@ const SellerExperience = ({ sellerName }) => {
       quantity: 2,
       shippingAddress: "789 Pine St, Chicago, IL 60601",
     },
-  ])
+  ]);
 
   const [storeSettings, setStoreSettings] = useState({
     storeName: "Maya's Handcrafted Treasures",
-    description: "Authentic handwoven textiles and ceramics from traditional artisans",
+    description:
+      "Authentic handwoven textiles and ceramics from traditional artisans",
     location: "Mumbai, India",
     phone: "+91 98765 43210",
     website: "www.mayascrafts.com",
     categories: ["Textiles & Fabrics", "Pottery & Ceramics"],
-  })
+  });
 
   // Analytics data
   const analytics = {
@@ -114,15 +115,18 @@ const SellerExperience = ({ sellerName }) => {
     totalViews: 1834,
     conversionRate: 2.4,
     monthlyGrowth: 15.3,
-  }
+  };
 
   const bestSellingData = products
     .sort((a, b) => b.sales - a.sales)
     .map((product) => ({
-      name: product.title.length > 15 ? product.title.substring(0, 15) + "..." : product.title,
+      name:
+        product.title.length > 15
+          ? product.title.substring(0, 15) + "..."
+          : product.title,
       sales: product.sales,
       revenue: product.revenue,
-    }))
+    }));
 
   const demandTrendData = [
     { month: "Jan", views: 1200, orders: 15, conversion: 1.25 },
@@ -131,12 +135,12 @@ const SellerExperience = ({ sellerName }) => {
     { month: "Apr", views: 1834, orders: 28, conversion: 1.53 },
     { month: "May", views: 2100, orders: 35, conversion: 1.67 },
     { month: "Jun", views: 2350, orders: 42, conversion: 1.79 },
-  ]
+  ];
 
   const categoryData = [
     { name: "Textiles & Fabrics", value: 65, color: "#8B5CF6" },
     { name: "Pottery & Ceramics", value: 35, color: "#06B6D4" },
-  ]
+  ];
 
   const handleAddProduct = (newProduct) => {
     const product = {
@@ -147,41 +151,49 @@ const SellerExperience = ({ sellerName }) => {
       likes: 0,
       sales: 0,
       revenue: 0,
-    }
-    setProducts([...products, product])
-    setShowAddModal(false)
-  }
+    };
+    setProducts([...products, product]);
+    setShowAddModal(false);
+  };
 
   const handleDeleteProduct = (productId) => {
-    setProducts(products.filter((p) => p.id !== productId))
-  }
+    setProducts(products.filter((p) => p.id !== productId));
+  };
 
   const handleOrderStatusChange = (orderId, newStatus) => {
-    setOrders(orders.map((order) => (order.id === orderId ? { ...order, status: newStatus } : order)))
-  }
+    setOrders(
+      orders.map((order) =>
+        order.id === orderId ? { ...order, status: newStatus } : order
+      )
+    );
+  };
 
   const getStatusColor = (status) => {
     switch (status) {
       case "pending":
-        return "bg-yellow-100 text-yellow-800"
+        return "bg-yellow-100 text-yellow-800";
       case "processing":
-        return "bg-blue-100 text-blue-800"
+        return "bg-blue-100 text-blue-800";
       case "shipped":
-        return "bg-orange-100 text-orange-800"
+        return "bg-orange-100 text-orange-800";
       case "delivered":
-        return "bg-orange-100 text-orange-800"
+        return "bg-orange-100 text-orange-800";
       case "cancelled":
-        return "bg-red-100 text-red-800"
+        return "bg-red-100 text-red-800";
       default:
-        return "bg-gray-100 text-gray-800"
+        return "bg-gray-100 text-gray-800";
     }
-  }
+  };
 
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back, {sellerName}</h1>
-        <p className="text-muted-foreground">Manage your store and grow your artisan business</p>
+        <h1 className="text-3xl font-bold text-foreground mb-2">
+          Welcome back, {sellerName}
+        </h1>
+        <p className="text-muted-foreground">
+          Manage your store and grow your artisan business
+        </p>
       </div>
 
       {/* Tabs */}
@@ -243,57 +255,87 @@ const SellerExperience = ({ sellerName }) => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-muted-foreground text-sm">Total Revenue</p>
-                  <p className="text-2xl font-bold text-foreground">${analytics.totalRevenue}</p>
+                  <p className="text-2xl font-bold text-foreground">
+                    ${analytics.totalRevenue}
+                  </p>
                 </div>
                 <DollarSign className="h-8 w-8 text-primary" />
               </div>
-              <p className="text-xs text-muted-foreground mt-2">+{analytics.monthlyGrowth}% from last month</p>
+              <p className="text-xs text-muted-foreground mt-2">
+                +{analytics.monthlyGrowth}% from last month
+              </p>
             </div>
 
             <div className="bg-card rounded-lg p-6 border border-border">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-muted-foreground text-sm">Total Orders</p>
-                  <p className="text-2xl font-bold text-foreground">{analytics.totalOrders}</p>
+                  <p className="text-2xl font-bold text-foreground">
+                    {analytics.totalOrders}
+                  </p>
                 </div>
                 <ShoppingBag className="h-8 w-8 text-primary" />
               </div>
-              <p className="text-xs text-muted-foreground mt-2">3 pending orders</p>
+              <p className="text-xs text-muted-foreground mt-2">
+                3 pending orders
+              </p>
             </div>
 
             <div className="bg-card rounded-lg p-6 border border-border">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-muted-foreground text-sm">Profile Views</p>
-                  <p className="text-2xl font-bold text-foreground">{analytics.totalViews}</p>
+                  <p className="text-2xl font-bold text-foreground">
+                    {analytics.totalViews}
+                  </p>
                 </div>
                 <Eye className="h-8 w-8 text-primary" />
               </div>
-              <p className="text-xs text-muted-foreground mt-2">+12% this week</p>
+              <p className="text-xs text-muted-foreground mt-2">
+                +12% this week
+              </p>
             </div>
 
             <div className="bg-card rounded-lg p-6 border border-border">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-sm">Conversion Rate</p>
-                  <p className="text-2xl font-bold text-foreground">{analytics.conversionRate}%</p>
+                  <p className="text-muted-foreground text-sm">
+                    Conversion Rate
+                  </p>
+                  <p className="text-2xl font-bold text-foreground">
+                    {analytics.conversionRate}%
+                  </p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-primary" />
               </div>
-              <p className="text-xs text-muted-foreground mt-2">Above average</p>
+              <p className="text-xs text-muted-foreground mt-2">
+                Above average
+              </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Best Selling Products Chart */}
             <div className="bg-card rounded-lg p-6 border border-border">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Best Selling Products</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Best Selling Products
+              </h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={bestSellingData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      stroke="hsl(var(--border))"
+                    />
+                    <XAxis
+                      dataKey="name"
+                      stroke="hsl(var(--muted-foreground))"
+                      fontSize={12}
+                    />
+                    <YAxis
+                      stroke="hsl(var(--muted-foreground))"
+                      fontSize={12}
+                    />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "hsl(var(--card))",
@@ -302,7 +344,11 @@ const SellerExperience = ({ sellerName }) => {
                         color: "hsl(var(--foreground))",
                       }}
                     />
-                    <Bar dataKey="sales" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                    <Bar
+                      dataKey="sales"
+                      fill="hsl(var(--primary))"
+                      radius={[4, 4, 0, 0]}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -310,13 +356,25 @@ const SellerExperience = ({ sellerName }) => {
 
             {/* Demand Trend Chart */}
             <div className="bg-card rounded-lg p-6 border border-border">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Demand Trends</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Demand Trends
+              </h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={demandTrendData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      stroke="hsl(var(--border))"
+                    />
+                    <XAxis
+                      dataKey="month"
+                      stroke="hsl(var(--muted-foreground))"
+                      fontSize={12}
+                    />
+                    <YAxis
+                      stroke="hsl(var(--muted-foreground))"
+                      fontSize={12}
+                    />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "hsl(var(--card))",
@@ -350,7 +408,9 @@ const SellerExperience = ({ sellerName }) => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Category Distribution */}
             <div className="bg-card rounded-lg p-6 border border-border">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Sales by Category</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Sales by Category
+              </h3>
               <div className="h-48">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -380,12 +440,22 @@ const SellerExperience = ({ sellerName }) => {
               </div>
               <div className="space-y-2 mt-4">
                 {categoryData.map((category, index) => (
-                  <div key={index} className="flex items-center justify-between">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between"
+                  >
                     <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }} />
-                      <span className="text-sm text-muted-foreground">{category.name}</span>
+                      <div
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: category.color }}
+                      />
+                      <span className="text-sm text-muted-foreground">
+                        {category.name}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-foreground">{category.value}%</span>
+                    <span className="text-sm font-medium text-foreground">
+                      {category.value}%
+                    </span>
                   </div>
                 ))}
               </div>
@@ -393,28 +463,42 @@ const SellerExperience = ({ sellerName }) => {
 
             {/* High Demand Insights */}
             <div className="lg:col-span-2 bg-card rounded-lg p-6 border border-border">
-              <h3 className="text-lg font-semibold text-foreground mb-4">High Demand Insights</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                High Demand Insights
+              </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-primary/5 rounded-lg border border-primary/20">
                   <div>
-                    <p className="font-medium text-foreground">Peak Viewing Hours</p>
-                    <p className="text-sm text-muted-foreground">2 PM - 6 PM sees 40% more traffic</p>
+                    <p className="font-medium text-foreground">
+                      Peak Viewing Hours
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      2 PM - 6 PM sees 40% more traffic
+                    </p>
                   </div>
                   <TrendingUp className="h-8 w-8 text-primary" />
                 </div>
 
                 <div className="flex items-center justify-between p-4 bg-orange-50 dark:bg-orange-950/20 rounded-lg border border-orange-200 dark:border-orange-800">
                   <div>
-                    <p className="font-medium text-foreground">Trending Category</p>
-                    <p className="text-sm text-muted-foreground">Textiles & Fabrics up 25% this month</p>
+                    <p className="font-medium text-foreground">
+                      Trending Category
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Textiles & Fabrics up 25% this month
+                    </p>
                   </div>
                   <Package className="h-8 w-8 text-orange-600" />
                 </div>
 
                 <div className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
                   <div>
-                    <p className="font-medium text-foreground">Customer Behavior</p>
-                    <p className="text-sm text-muted-foreground">Average 3.2 products viewed per session</p>
+                    <p className="font-medium text-foreground">
+                      Customer Behavior
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Average 3.2 products viewed per session
+                    </p>
                   </div>
                   <Eye className="h-8 w-8 text-blue-600" />
                 </div>
@@ -425,17 +509,32 @@ const SellerExperience = ({ sellerName }) => {
           {/* Recent Activity */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-card rounded-lg p-6 border border-border">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Recent Orders</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Recent Orders
+              </h3>
               <div className="space-y-3">
                 {orders.slice(0, 3).map((order) => (
-                  <div key={order.id} className="flex items-center justify-between py-2">
+                  <div
+                    key={order.id}
+                    className="flex items-center justify-between py-2"
+                  >
                     <div>
-                      <p className="font-medium text-foreground">{order.productName}</p>
-                      <p className="text-sm text-muted-foreground">{order.buyerName}</p>
+                      <p className="font-medium text-foreground">
+                        {order.productName}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {order.buyerName}
+                      </p>
                     </div>
                     <div className="text-right">
-                      <p className="font-medium text-foreground">${order.amount}</p>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
+                      <p className="font-medium text-foreground">
+                        ${order.amount}
+                      </p>
+                      <span
+                        className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                          order.status
+                        )}`}
+                      >
                         {order.status}
                       </span>
                     </div>
@@ -445,10 +544,15 @@ const SellerExperience = ({ sellerName }) => {
             </div>
 
             <div className="bg-card rounded-lg p-6 border border-border">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Top Products</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Top Products
+              </h3>
               <div className="space-y-3">
                 {products.slice(0, 3).map((product) => (
-                  <div key={product.id} className="flex items-center justify-between py-2">
+                  <div
+                    key={product.id}
+                    className="flex items-center justify-between py-2"
+                  >
                     <div className="flex items-center space-x-3">
                       <img
                         src={product.image || "/placeholder.svg"}
@@ -456,11 +560,17 @@ const SellerExperience = ({ sellerName }) => {
                         className="w-10 h-10 object-cover rounded"
                       />
                       <div>
-                        <p className="font-medium text-foreground">{product.title}</p>
-                        <p className="text-sm text-muted-foreground">{product.views} views</p>
+                        <p className="font-medium text-foreground">
+                          {product.title}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {product.views} views
+                        </p>
                       </div>
                     </div>
-                    <p className="font-medium text-foreground">${product.price}</p>
+                    <p className="font-medium text-foreground">
+                      ${product.price}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -473,7 +583,9 @@ const SellerExperience = ({ sellerName }) => {
       {activeTab === "products" && (
         <div>
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold text-foreground">Your Products</h2>
+            <h2 className="text-xl font-semibold text-foreground">
+              Your Products
+            </h2>
             <button
               onClick={() => setShowAddModal(true)}
               className="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center"
@@ -485,7 +597,10 @@ const SellerExperience = ({ sellerName }) => {
 
           <div className="grid gap-4">
             {products.map((product) => (
-              <div key={product.id} className="bg-card rounded-lg p-6 border border-border">
+              <div
+                key={product.id}
+                className="bg-card rounded-lg p-6 border border-border"
+              >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <img
@@ -494,9 +609,15 @@ const SellerExperience = ({ sellerName }) => {
                       className="w-20 h-20 object-cover rounded-lg"
                     />
                     <div>
-                      <h3 className="font-semibold text-foreground text-lg">{product.title}</h3>
-                      <p className="text-primary font-medium text-lg">${product.price}</p>
-                      <p className="text-sm text-muted-foreground">{product.category}</p>
+                      <h3 className="font-semibold text-foreground text-lg">
+                        {product.title}
+                      </h3>
+                      <p className="text-primary font-medium text-lg">
+                        ${product.price}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {product.category}
+                      </p>
                       <div className="flex items-center space-x-4 mt-2 text-sm text-muted-foreground">
                         <span className="flex items-center">
                           <Eye className="h-4 w-4 mr-1" />
@@ -505,7 +626,9 @@ const SellerExperience = ({ sellerName }) => {
                         <span>Stock: {product.stock}</span>
                         <span
                           className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            product.status === "active" ? "bg-orange-100 text-orange-800" : "bg-gray-100 text-gray-800"
+                            product.status === "active"
+                              ? "bg-orange-100 text-orange-800"
+                              : "bg-gray-100 text-gray-800"
                           }`}
                         >
                           {product.status}
@@ -534,45 +657,72 @@ const SellerExperience = ({ sellerName }) => {
       {/* Orders Tab */}
       {activeTab === "orders" && (
         <div>
-          <h2 className="text-xl font-semibold text-foreground mb-6">Order Management</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-6">
+            Order Management
+          </h2>
           <div className="space-y-4">
             {orders.map((order) => (
-              <div key={order.id} className="bg-card rounded-lg p-6 border border-border">
+              <div
+                key={order.id}
+                className="bg-card rounded-lg p-6 border border-border"
+              >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="font-semibold text-foreground text-lg">{order.productName}</h3>
+                    <h3 className="font-semibold text-foreground text-lg">
+                      {order.productName}
+                    </h3>
                     <p className="text-muted-foreground">
                       Order #{order.id} • {order.orderDate}
                     </p>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(order.status)}`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(
+                      order.status
+                    )}`}
+                  >
                     {order.status}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <h4 className="font-medium text-foreground mb-2">Customer Details</h4>
+                    <h4 className="font-medium text-foreground mb-2">
+                      Customer Details
+                    </h4>
                     <p className="text-muted-foreground">{order.buyerName}</p>
-                    <p className="text-muted-foreground text-sm">{order.buyerEmail}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {order.buyerEmail}
+                    </p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground mb-2">Order Details</h4>
-                    <p className="text-muted-foreground">Quantity: {order.quantity}</p>
-                    <p className="text-muted-foreground">Amount: ${order.amount}</p>
+                    <h4 className="font-medium text-foreground mb-2">
+                      Order Details
+                    </h4>
+                    <p className="text-muted-foreground">
+                      Quantity: {order.quantity}
+                    </p>
+                    <p className="text-muted-foreground">
+                      Amount: ${order.amount}
+                    </p>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <h4 className="font-medium text-foreground mb-2">Shipping Address</h4>
-                  <p className="text-muted-foreground text-sm">{order.shippingAddress}</p>
+                  <h4 className="font-medium text-foreground mb-2">
+                    Shipping Address
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    {order.shippingAddress}
+                  </p>
                 </div>
 
                 <div className="flex items-center justify-between pt-4 border-t border-border">
                   <div className="flex items-center space-x-2">
                     <select
                       value={order.status}
-                      onChange={(e) => handleOrderStatusChange(order.id, e.target.value)}
+                      onChange={(e) =>
+                        handleOrderStatusChange(order.id, e.target.value)
+                      }
                       className="px-3 py-1 bg-background border border-border rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
                     >
                       <option value="pending">Pending</option>
@@ -596,24 +746,40 @@ const SellerExperience = ({ sellerName }) => {
       {/* Store Settings Tab */}
       {activeTab === "store" && (
         <div>
-          <h2 className="text-xl font-semibold text-foreground mb-6">Store Settings</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-6">
+            Store Settings
+          </h2>
           <div className="bg-card rounded-lg p-6 border border-border">
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Store Name</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Store Name
+                </label>
                 <input
                   type="text"
                   value={storeSettings.storeName}
-                  onChange={(e) => setStoreSettings((prev) => ({ ...prev, storeName: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreSettings((prev) => ({
+                      ...prev,
+                      storeName: e.target.value,
+                    }))
+                  }
                   className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Description</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Description
+                </label>
                 <textarea
                   value={storeSettings.description}
-                  onChange={(e) => setStoreSettings((prev) => ({ ...prev, description: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreSettings((prev) => ({
+                      ...prev,
+                      description: e.target.value,
+                    }))
+                  }
                   rows={3}
                   className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"
                 />
@@ -621,32 +787,53 @@ const SellerExperience = ({ sellerName }) => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Location</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Location
+                  </label>
                   <input
                     type="text"
                     value={storeSettings.location}
-                    onChange={(e) => setStoreSettings((prev) => ({ ...prev, location: e.target.value }))}
+                    onChange={(e) =>
+                      setStoreSettings((prev) => ({
+                        ...prev,
+                        location: e.target.value,
+                      }))
+                    }
                     className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Phone</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Phone
+                  </label>
                   <input
                     type="tel"
                     value={storeSettings.phone}
-                    onChange={(e) => setStoreSettings((prev) => ({ ...prev, phone: e.target.value }))}
+                    onChange={(e) =>
+                      setStoreSettings((prev) => ({
+                        ...prev,
+                        phone: e.target.value,
+                      }))
+                    }
                     className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Website</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Website
+                </label>
                 <input
                   type="url"
                   value={storeSettings.website}
-                  onChange={(e) => setStoreSettings((prev) => ({ ...prev, website: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreSettings((prev) => ({
+                      ...prev,
+                      website: e.target.value,
+                    }))
+                  }
                   className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                 />
               </div>
@@ -661,9 +848,14 @@ const SellerExperience = ({ sellerName }) => {
         </div>
       )}
 
-      {showAddModal && <AddProductModal onClose={() => setShowAddModal(false)} onAddProduct={handleAddProduct} />}
+      {showAddModal && (
+        <AddProductModal
+          onClose={() => setShowAddModal(false)}
+          onAddProduct={handleAddProduct}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default SellerExperience
+export default SellerExperience;

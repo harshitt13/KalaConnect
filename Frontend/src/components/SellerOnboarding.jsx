@@ -1,10 +1,19 @@
+"use client"
 
-
-import { useState } from "react"
-import { Palette, ArrowRight, ArrowLeft, Store, MapPin, Globe, Camera, Sparkles } from "lucide-react"
+import { useState } from "react";
+import {
+  Palette,
+  ArrowRight,
+  ArrowLeft,
+  Store,
+  MapPin,
+  Globe,
+  Camera,
+  Sparkles,
+} from "lucide-react";
 
 const SellerOnboarding = ({ userName, onComplete }) => {
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useState(1);
   const [storeData, setStoreData] = useState({
     storeName: "",
     description: "",
@@ -13,7 +22,7 @@ const SellerOnboarding = ({ userName, onComplete }) => {
     website: "",
     categories: [],
     profileImage: null,
-  })
+  });
 
   const categories = [
     "Jewelry & Accessories",
@@ -24,7 +33,7 @@ const SellerOnboarding = ({ userName, onComplete }) => {
     "Craft Supplies",
     "Vintage Items",
     "Bags & Purses",
-  ]
+  ];
 
   const handleCategoryToggle = (category) => {
     setStoreData((prev) => ({
@@ -32,35 +41,35 @@ const SellerOnboarding = ({ userName, onComplete }) => {
       categories: prev.categories.includes(category)
         ? prev.categories.filter((c) => c !== category)
         : [...prev.categories, category],
-    }))
-  }
+    }));
+  };
 
   const handleNext = () => {
     if (currentStep < 3) {
-      setCurrentStep(currentStep + 1)
+      setCurrentStep(currentStep + 1);
     } else {
-      onComplete(storeData)
+      onComplete(storeData);
     }
-  }
+  };
 
   const handleBack = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1)
+      setCurrentStep(currentStep - 1);
     }
-  }
+  };
 
   const isStepValid = () => {
     switch (currentStep) {
       case 1:
-        return storeData.storeName.trim() && storeData.description.trim()
+        return storeData.storeName.trim() && storeData.description.trim();
       case 2:
-        return storeData.location.trim()
+        return storeData.location.trim();
       case 3:
-        return storeData.categories.length > 0
+        return storeData.categories.length > 0;
       default:
-        return false
+        return false;
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -68,17 +77,25 @@ const SellerOnboarding = ({ userName, onComplete }) => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <Palette className="h-8 w-8 text-primary mr-2" />
-            <h1 className="text-2xl font-bold text-foreground">KalaConnect AI</h1>
+            <h1 className="text-2xl font-bold text-foreground">
+              KalaConnect AI
+            </h1>
           </div>
-          <h2 className="text-3xl font-bold text-foreground mb-2">Set Up Your Store</h2>
-          <p className="text-muted-foreground">Step {currentStep} of 3 - Let's create your artisan profile</p>
+          <h2 className="text-3xl font-bold text-foreground mb-2">
+            Set Up Your Store
+          </h2>
+          <p className="text-muted-foreground">
+            Step {currentStep} of 3 - Let's create your artisan profile
+          </p>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">Progress</span>
-            <span className="text-sm text-muted-foreground">{Math.round((currentStep / 3) * 100)}%</span>
+            <span className="text-sm text-muted-foreground">
+              {Math.round((currentStep / 3) * 100)}%
+            </span>
           </div>
           <div className="w-full bg-muted rounded-full h-2">
             <div
@@ -94,26 +111,44 @@ const SellerOnboarding = ({ userName, onComplete }) => {
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <Store className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-foreground">Store Information</h3>
-                <p className="text-muted-foreground">Tell us about your craft business</p>
+                <h3 className="text-xl font-semibold text-foreground">
+                  Store Information
+                </h3>
+                <p className="text-muted-foreground">
+                  Tell us about your craft business
+                </p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Store Name *</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Store Name *
+                </label>
                 <input
                   type="text"
                   value={storeData.storeName}
-                  onChange={(e) => setStoreData((prev) => ({ ...prev, storeName: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreData((prev) => ({
+                      ...prev,
+                      storeName: e.target.value,
+                    }))
+                  }
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   placeholder="e.g., Maya's Handwoven Textiles"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Store Description *</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Store Description *
+                </label>
                 <textarea
                   value={storeData.description}
-                  onChange={(e) => setStoreData((prev) => ({ ...prev, description: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreData((prev) => ({
+                      ...prev,
+                      description: e.target.value,
+                    }))
+                  }
                   rows={4}
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"
                   placeholder="Describe your craft, your story, and what makes your work unique..."
@@ -121,11 +156,18 @@ const SellerOnboarding = ({ userName, onComplete }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Website (Optional)</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Website (Optional)
+                </label>
                 <input
                   type="url"
                   value={storeData.website}
-                  onChange={(e) => setStoreData((prev) => ({ ...prev, website: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreData((prev) => ({
+                      ...prev,
+                      website: e.target.value,
+                    }))
+                  }
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   placeholder="https://your-website.com"
                 />
@@ -138,27 +180,42 @@ const SellerOnboarding = ({ userName, onComplete }) => {
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-foreground">Location & Contact</h3>
-                <p className="text-muted-foreground">Help customers find and contact you</p>
+                <h3 className="text-xl font-semibold text-foreground">
+                  Location & Contact
+                </h3>
+                <p className="text-muted-foreground">
+                  Help customers find and contact you
+                </p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Location *</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Location *
+                </label>
                 <input
                   type="text"
                   value={storeData.location}
-                  onChange={(e) => setStoreData((prev) => ({ ...prev, location: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreData((prev) => ({
+                      ...prev,
+                      location: e.target.value,
+                    }))
+                  }
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   placeholder="e.g., Mumbai, India or New York, USA"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Phone Number (Optional)</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Phone Number (Optional)
+                </label>
                 <input
                   type="tel"
                   value={storeData.phone}
-                  onChange={(e) => setStoreData((prev) => ({ ...prev, phone: e.target.value }))}
+                  onChange={(e) =>
+                    setStoreData((prev) => ({ ...prev, phone: e.target.value }))
+                  }
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   placeholder="+1 (555) 123-4567"
                 />
@@ -168,10 +225,12 @@ const SellerOnboarding = ({ userName, onComplete }) => {
                 <div className="flex items-start">
                   <Globe className="h-5 w-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Global Reach</h4>
+                    <h4 className="font-medium text-foreground mb-1">
+                      Global Reach
+                    </h4>
                     <p className="text-sm text-muted-foreground">
-                      Your location helps customers understand shipping times and costs. You can sell to customers
-                      worldwide!
+                      Your location helps customers understand shipping times
+                      and costs. You can sell to customers worldwide!
                     </p>
                   </div>
                 </div>
@@ -184,8 +243,12 @@ const SellerOnboarding = ({ userName, onComplete }) => {
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <Sparkles className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-foreground">Product Categories</h3>
-                <p className="text-muted-foreground">Select the categories that best describe your crafts</p>
+                <h3 className="text-xl font-semibold text-foreground">
+                  Product Categories
+                </h3>
+                <p className="text-muted-foreground">
+                  Select the categories that best describe your crafts
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -208,10 +271,13 @@ const SellerOnboarding = ({ userName, onComplete }) => {
                 <div className="flex items-start">
                   <Camera className="h-5 w-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Ready to Start Selling?</h4>
+                    <h4 className="font-medium text-foreground mb-1">
+                      Ready to Start Selling?
+                    </h4>
                     <p className="text-sm text-muted-foreground">
-                      After setup, you'll be able to add products with our AI-powered description generator to help
-                      showcase your crafts beautifully.
+                      After setup, you'll be able to add products with our
+                      AI-powered description generator to help showcase your
+                      crafts beautifully.
                     </p>
                   </div>
                 </div>
@@ -242,7 +308,7 @@ const SellerOnboarding = ({ userName, onComplete }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SellerOnboarding
+export default SellerOnboarding;

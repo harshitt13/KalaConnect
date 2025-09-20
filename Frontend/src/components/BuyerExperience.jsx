@@ -1,38 +1,38 @@
+"use client"
 
-
-import { useState } from "react"
-import MarketplaceView from "./MarketplaceView"
-import ProductDetailView from "./ProductDetailView"
-import WishlistView from "./WishlistView"
-import BuyerOrdersView from "./BuyerOrdersView"
-import { Heart, Search, Package } from "lucide-react"
+import { useState } from "react";
+import MarketplaceView from "./MarketplaceView";
+import ProductDetailView from "./ProductDetailView";
+import WishlistView from "./WishlistView";
+import BuyerOrdersView from "./BuyerOrdersView";
+import { Heart, Search, Package } from "lucide-react";
 
 const BuyerExperience = () => {
-  const [selectedProduct, setSelectedProduct] = useState(null)
-  const [activeView, setActiveView] = useState("marketplace") // marketplace, wishlist, orders, profile
-  const [wishlist, setWishlist] = useState([])
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [activeView, setActiveView] = useState("marketplace"); // marketplace, wishlist, orders, profile
+  const [wishlist, setWishlist] = useState([]);
 
   const handleProductSelect = (product) => {
-    setSelectedProduct(product)
-  }
+    setSelectedProduct(product);
+  };
 
   const handleBackToMarketplace = () => {
-    setSelectedProduct(null)
-  }
+    setSelectedProduct(null);
+  };
 
   const handleAddToWishlist = (product) => {
     if (!wishlist.find((item) => item.id === product.id)) {
-      setWishlist([...wishlist, product])
+      setWishlist([...wishlist, product]);
     }
-  }
+  };
 
   const handleRemoveFromWishlist = (productId) => {
-    setWishlist(wishlist.filter((item) => item.id !== productId))
-  }
+    setWishlist(wishlist.filter((item) => item.id !== productId));
+  };
 
   const isInWishlist = (productId) => {
-    return wishlist.some((item) => item.id === productId)
-  }
+    return wishlist.some((item) => item.id === productId);
+  };
 
   if (selectedProduct) {
     return (
@@ -42,7 +42,7 @@ const BuyerExperience = () => {
         onAddToWishlist={handleAddToWishlist}
         isInWishlist={isInWishlist(selectedProduct.id)}
       />
-    )
+    );
   }
 
   return (
@@ -103,9 +103,11 @@ const BuyerExperience = () => {
         />
       )}
 
-      {activeView === "orders" && <BuyerOrdersView onBack={() => setActiveView("marketplace")} />}
+      {activeView === "orders" && (
+        <BuyerOrdersView onBack={() => setActiveView("marketplace")} />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default BuyerExperience
+export default BuyerExperience;

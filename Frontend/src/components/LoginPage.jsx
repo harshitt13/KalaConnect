@@ -1,41 +1,41 @@
+"use client"
 
-
-import { useState } from "react"
-import { Palette, ArrowRight, Phone, Mail } from "lucide-react"
+import { useState } from "react";
+import { Palette, ArrowRight, Phone, Mail } from "lucide-react";
 
 const LoginPage = ({ onLogin }) => {
-  const [mode, setMode] = useState("") // "signup" or "login"
-  const [signupMethod, setSignupMethod] = useState("") // "mobile", "google", or "email"
-  const [name, setName] = useState("")
-  const [selectedRole, setSelectedRole] = useState("")
-  const [mobileNumber, setMobileNumber] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [mode, setMode] = useState(""); // "signup" or "login"
+  const [signupMethod, setSignupMethod] = useState(""); // "mobile", "google", or "email"
+  const [name, setName] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (mode === "login") {
       // For login, use email as the user identifier
       if (email.trim() && password.trim()) {
         // In a real app, you'd validate credentials here
         // For demo, extract name from email
-        const userName = email.split("@")[0] || email
-        onLogin(userName)
+        const userName = email.split("@")[0] || email;
+        onLogin(userName);
       }
     } else {
       // For signup, use the provided name
       if (name.trim()) {
-        onLogin(name.trim())
+        onLogin(name.trim());
       }
     }
-  }
+  };
 
   const handleGoogleSignup = () => {
     // In a real app, this would integrate with Google OAuth
-    const googleUserName = "Google User"
-    onLogin(googleUserName)
-  }
+    const googleUserName = "Google User";
+    onLogin(googleUserName);
+  };
 
   if (!mode) {
     return (
@@ -44,13 +44,19 @@ const LoginPage = ({ onLogin }) => {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary mr-2" />
-              <h1 className="text-3xl font-bold text-foreground">KalaConnect AI</h1>
+              <h1 className="text-3xl font-bold text-foreground">
+                KalaConnect AI
+              </h1>
             </div>
-            <p className="text-muted-foreground">AI-Powered Marketplace for Local Artisans</p>
+            <p className="text-muted-foreground">
+              AI-Powered Marketplace for Local Artisans
+            </p>
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-foreground text-center mb-6">Welcome!</h2>
+            <h2 className="text-xl font-semibold text-foreground text-center mb-6">
+              Welcome!
+            </h2>
 
             <button
               onClick={() => setMode("signup")}
@@ -69,7 +75,7 @@ const LoginPage = ({ onLogin }) => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (mode === "login") {
@@ -79,14 +85,19 @@ const LoginPage = ({ onLogin }) => {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-orange-500 mr-2" />
-              <h1 className="text-3xl font-bold text-orange-900">KalaConnect AI</h1>
+              <h1 className="text-3xl font-bold text-orange-900">
+                KalaConnect AI
+              </h1>
             </div>
             <p className="text-orange-600">Welcome back!</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="loginEmail" className="block text-sm font-medium text-orange-900 mb-2">
+              <label
+                htmlFor="loginEmail"
+                className="block text-sm font-medium text-orange-900 mb-2"
+              >
                 Email Address
               </label>
               <input
@@ -101,7 +112,10 @@ const LoginPage = ({ onLogin }) => {
             </div>
 
             <div>
-              <label htmlFor="loginPassword" className="block text-sm font-medium text-orange-900 mb-2">
+              <label
+                htmlFor="loginPassword"
+                className="block text-sm font-medium text-orange-900 mb-2"
+              >
                 Password
               </label>
               <input
@@ -149,7 +163,7 @@ const LoginPage = ({ onLogin }) => {
           </form>
         </div>
       </div>
-    )
+    );
   }
 
   if (mode === "signup" && !signupMethod) {
@@ -159,13 +173,19 @@ const LoginPage = ({ onLogin }) => {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary mr-2" />
-              <h1 className="text-3xl font-bold text-foreground">KalaConnect AI</h1>
+              <h1 className="text-3xl font-bold text-foreground">
+                KalaConnect AI
+              </h1>
             </div>
-            <p className="text-muted-foreground">AI-Powered Marketplace for Local Artisans</p>
+            <p className="text-muted-foreground">
+              AI-Powered Marketplace for Local Artisans
+            </p>
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-foreground text-center mb-6">Sign up to get started</h2>
+            <h2 className="text-xl font-semibold text-foreground text-center mb-6">
+              Sign up to get started
+            </h2>
 
             <button
               onClick={() => setSignupMethod("mobile")}
@@ -217,7 +237,10 @@ const LoginPage = ({ onLogin }) => {
               </button>
               <p className="text-sm text-muted-foreground">
                 Already have an account?{" "}
-                <button onClick={() => setMode("login")} className="text-primary hover:underline font-medium">
+                <button
+                  onClick={() => setMode("login")}
+                  className="text-primary hover:underline font-medium"
+                >
                   Sign in here
                 </button>
               </p>
@@ -225,7 +248,7 @@ const LoginPage = ({ onLogin }) => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (signupMethod === "google") {
@@ -235,7 +258,9 @@ const LoginPage = ({ onLogin }) => {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary mr-2" />
-              <h1 className="text-3xl font-bold text-foreground">KalaConnect AI</h1>
+              <h1 className="text-3xl font-bold text-foreground">
+                KalaConnect AI
+              </h1>
             </div>
             <p className="text-muted-foreground">Sign up with Google</p>
           </div>
@@ -263,7 +288,7 @@ const LoginPage = ({ onLogin }) => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -272,16 +297,23 @@ const LoginPage = ({ onLogin }) => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <Palette className="h-8 w-8 text-primary mr-2" />
-            <h1 className="text-3xl font-bold text-foreground">KalaConnect AI</h1>
+            <h1 className="text-3xl font-bold text-foreground">
+              KalaConnect AI
+            </h1>
           </div>
           <p className="text-muted-foreground">
-            {signupMethod === "mobile" ? "Sign up with Mobile Number" : "Sign up with Email"}
+            {signupMethod === "mobile"
+              ? "Sign up with Mobile Number"
+              : "Sign up with Email"}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
               Your Name
             </label>
             <input
@@ -297,7 +329,10 @@ const LoginPage = ({ onLogin }) => {
 
           {signupMethod === "mobile" ? (
             <div>
-              <label htmlFor="mobile" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="mobile"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Mobile Number
               </label>
               <input
@@ -313,7 +348,10 @@ const LoginPage = ({ onLogin }) => {
           ) : (
             <>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Email Address
                 </label>
                 <input
@@ -327,7 +365,10 @@ const LoginPage = ({ onLogin }) => {
                 />
               </div>
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Password
                 </label>
                 <input
@@ -366,7 +407,7 @@ const LoginPage = ({ onLogin }) => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

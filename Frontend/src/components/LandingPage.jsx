@@ -1,10 +1,16 @@
-
-
-import { useState } from "react"
-import { Palette, Search, Star, ArrowRight, Users, ShoppingBag, Sparkles } from "lucide-react"
+import { useState } from "react";
+import {
+  Palette,
+  Search,
+  Star,
+  ArrowRight,
+  Users,
+  ShoppingBag,
+  Sparkles,
+} from "lucide-react";
 
 const LandingPage = ({ onGetStarted }) => {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
 
   const featuredArtisans = [
     {
@@ -31,7 +37,7 @@ const LandingPage = ({ onGetStarted }) => {
       rating: 5.0,
       products: 32,
     },
-  ]
+  ];
 
   const featuredProducts = [
     {
@@ -55,7 +61,7 @@ const LandingPage = ({ onGetStarted }) => {
       image: "/artistic-hand-blown-glass-vase.jpg",
       artisan: "Michael Thompson",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,20 +71,34 @@ const LandingPage = ({ onGetStarted }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Palette className="h-8 w-8 text-primary" />
-              <h1 className="text-2xl font-bold text-foreground">KalaConnect AI</h1>
+              <h1 className="text-2xl font-bold text-foreground">
+                KalaConnect AI
+              </h1>
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#marketplace" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="#marketplace"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Marketplace
               </a>
-              <a href="#artisans" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="#artisans"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Artisans
               </a>
-              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="#about"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 About
               </a>
-              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="#contact"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Contact
               </a>
             </nav>
@@ -102,8 +122,8 @@ const LandingPage = ({ onGetStarted }) => {
               <span className="text-primary"> Unique Creations</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 text-balance max-w-2xl mx-auto">
-              Discover handcrafted treasures from talented artisans worldwide. Every purchase supports creativity and
-              craftsmanship.
+              Discover handcrafted treasures from talented artisans worldwide.
+              Every purchase supports creativity and craftsmanship.
             </p>
 
             {/* Search Bar */}
@@ -153,14 +173,18 @@ const LandingPage = ({ onGetStarted }) => {
               <div className="flex items-center justify-center mb-4">
                 <ShoppingBag className="h-12 w-12 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold text-foreground mb-2">2,000+</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-2">
+                2,000+
+              </h3>
               <p className="text-muted-foreground">Unique Products</p>
             </div>
             <div>
               <div className="flex items-center justify-center mb-4">
                 <Sparkles className="h-12 w-12 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold text-foreground mb-2">10,000+</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-2">
+                10,000+
+              </h3>
               <p className="text-muted-foreground">Happy Customers</p>
             </div>
           </div>
@@ -171,7 +195,9 @@ const LandingPage = ({ onGetStarted }) => {
       <section id="artisans" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Featured Artisans</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Featured Artisans
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Meet the talented creators behind our unique marketplace
             </p>
@@ -189,8 +215,12 @@ const LandingPage = ({ onGetStarted }) => {
                     alt={artisan.name}
                     className="w-24 h-24 rounded-full mx-auto mb-4 object-cover group-hover:scale-105 transition-transform"
                   />
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{artisan.name}</h3>
-                  <p className="text-primary font-medium mb-3">{artisan.craft}</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                    {artisan.name}
+                  </h3>
+                  <p className="text-primary font-medium mb-3">
+                    {artisan.craft}
+                  </p>
                   <div className="flex items-center justify-center space-x-4 text-sm text-muted-foreground">
                     <div className="flex items-center">
                       <Star className="h-4 w-4 text-yellow-500 fill-current mr-1" />
@@ -209,7 +239,9 @@ const LandingPage = ({ onGetStarted }) => {
       <section id="marketplace" className="py-20 bg-card">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Marketplace Highlights</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Marketplace Highlights
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Discover handcrafted treasures that tell a story
             </p>
@@ -229,10 +261,16 @@ const LandingPage = ({ onGetStarted }) => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{product.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-3">by {product.artisan}</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-3">
+                    by {product.artisan}
+                  </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-primary">{product.price}</span>
+                    <span className="text-2xl font-bold text-primary">
+                      {product.price}
+                    </span>
                     <button className="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                       View Details
                     </button>
@@ -247,9 +285,12 @@ const LandingPage = ({ onGetStarted }) => {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary to-accent">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-primary-foreground mb-6">Ready to Start Your Journey?</h2>
+          <h2 className="text-4xl font-bold text-primary-foreground mb-6">
+            Ready to Start Your Journey?
+          </h2>
           <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of artisans and buyers in our thriving marketplace community
+            Join thousands of artisans and buyers in our thriving marketplace
+            community
           </p>
           <button
             onClick={onGetStarted}
@@ -269,23 +310,34 @@ const LandingPage = ({ onGetStarted }) => {
                 <Palette className="h-6 w-6" />
                 <h3 className="text-lg font-bold">KalaConnect AI</h3>
               </div>
-              <p className="text-background/70">Connecting artisans with the world, one creation at a time.</p>
+              <p className="text-background/70">
+                Connecting artisans with the world, one creation at a time.
+              </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Marketplace</h4>
               <ul className="space-y-2 text-background/70">
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Browse Products
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Categories
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Featured
                   </a>
                 </li>
@@ -295,17 +347,26 @@ const LandingPage = ({ onGetStarted }) => {
               <h4 className="font-semibold mb-4">For Artisans</h4>
               <ul className="space-y-2 text-background/70">
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Sell Your Crafts
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     AI Tools
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Success Stories
                   </a>
                 </li>
@@ -315,17 +376,26 @@ const LandingPage = ({ onGetStarted }) => {
               <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-background/70">
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Help Center
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Contact Us
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-background transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-background transition-colors"
+                  >
                     Privacy Policy
                   </a>
                 </li>
@@ -338,7 +408,7 @@ const LandingPage = ({ onGetStarted }) => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;

@@ -1,21 +1,22 @@
-
-
-import { Heart, ShoppingBag, Trash2 } from "lucide-react"
+import { Heart, ShoppingBag, Trash2 } from "lucide-react";
 
 const WishlistView = ({ wishlist, onProductSelect, onRemoveFromWishlist }) => {
   if (wishlist.length === 0) {
     return (
       <div className="text-center py-12">
         <Heart className="h-16 w-16 mx-auto mb-4 text-muted-foreground opacity-50" />
-        <h3 className="text-xl font-semibold text-foreground mb-2">Your wishlist is empty</h3>
+        <h3 className="text-xl font-semibold text-foreground mb-2">
+          Your wishlist is empty
+        </h3>
         <p className="text-muted-foreground mb-6">
-          Start exploring our marketplace to find unique handcrafted items you love
+          Start exploring our marketplace to find unique handcrafted items you
+          love
         </p>
         <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
           Browse Products
         </button>
       </div>
-    )
+    );
   }
 
   return (
@@ -52,18 +53,28 @@ const WishlistView = ({ wishlist, onProductSelect, onRemoveFromWishlist }) => {
 
             <div className="p-4">
               <div className="mb-3">
-                <h3 className="font-semibold text-foreground text-lg line-clamp-1">{product.title}</h3>
-                <p className="text-muted-foreground text-sm">by {product.artisan}</p>
+                <h3 className="font-semibold text-foreground text-lg line-clamp-1">
+                  {product.title}
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  by {product.artisan}
+                </p>
               </div>
 
-              <p className="text-muted-foreground text-sm line-clamp-2 mb-3">{product.story}</p>
+              <p className="text-muted-foreground text-sm line-clamp-2 mb-3">
+                {product.story}
+              </p>
 
               <div className="flex items-center justify-between">
                 <div>
                   {product.isOnSale && product.originalPrice && (
-                    <p className="text-muted-foreground text-sm line-through">${product.originalPrice}</p>
+                    <p className="text-muted-foreground text-sm line-through">
+                      ${product.originalPrice}
+                    </p>
                   )}
-                  <p className="text-primary font-bold text-xl">${product.price}</p>
+                  <p className="text-primary font-bold text-xl">
+                    ${product.price}
+                  </p>
                 </div>
 
                 <div className="flex items-center space-x-2">
@@ -88,7 +99,7 @@ const WishlistView = ({ wishlist, onProductSelect, onRemoveFromWishlist }) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WishlistView
+export default WishlistView;

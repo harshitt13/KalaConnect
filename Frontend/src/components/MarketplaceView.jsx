@@ -1,16 +1,20 @@
+"use client"
 
+import { useState, useMemo } from "react";
+import { Search, Filter, Grid, List } from "lucide-react";
+import ProductCard from "./ProductCard";
 
-import { useState, useMemo } from "react"
-import { Search, Filter, Grid, List } from "lucide-react"
-import ProductCard from "./ProductCard"
-
-const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [priceRange, setPriceRange] = useState("all")
-  const [sortBy, setSortBy] = useState("featured")
-  const [viewMode, setViewMode] = useState("grid")
-  const [showFilters, setShowFilters] = useState(false)
+const MarketplaceView = ({
+  onProductSelect,
+  onAddToWishlist,
+  isInWishlist,
+}) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [priceRange, setPriceRange] = useState("all");
+  const [sortBy, setSortBy] = useState("featured");
+  const [viewMode, setViewMode] = useState("grid");
+  const [showFilters, setShowFilters] = useState(false);
 
   // Enhanced product data with more details
   const products = [
@@ -27,7 +31,8 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
       reviews: 24,
       isOnSale: true,
       tags: ["handwoven", "silk", "traditional", "sustainable"],
-      story: "Crafted using traditional techniques passed down through generations...",
+      story:
+        "Crafted using traditional techniques passed down through generations...",
       description:
         "This exquisite silk scarf is handwoven using premium mulberry silk threads. Each piece takes approximately 3 days to complete, featuring intricate patterns inspired by ancient Indian motifs.",
       fullStory:
@@ -63,10 +68,12 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
       reviews: 12,
       isOnSale: false,
       tags: ["wood", "jewelry", "carved", "sustainable"],
-      story: "Carved from sustainable walnut wood with intricate floral patterns...",
+      story:
+        "Carved from sustainable walnut wood with intricate floral patterns...",
       description:
         "This beautiful jewelry box features hand-carved floral patterns and is made from sustainable walnut wood.",
-      fullStory: "Sarah Thompson carves each jewelry box by hand from sustainable walnut wood.",
+      fullStory:
+        "Sarah Thompson carves each jewelry box by hand from sustainable walnut wood.",
     },
     {
       id: 4,
@@ -80,9 +87,12 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
       reviews: 31,
       isOnSale: false,
       tags: ["silver", "pendant", "handcrafted", "modern"],
-      story: "Contemporary design meets traditional silversmithing techniques...",
-      description: "This stunning silver pendant features a unique geometric design that catches light beautifully.",
-      fullStory: "Aisha combines modern design aesthetics with traditional Native American silversmithing techniques.",
+      story:
+        "Contemporary design meets traditional silversmithing techniques...",
+      description:
+        "This stunning silver pendant features a unique geometric design that catches light beautifully.",
+      fullStory:
+        "Aisha combines modern design aesthetics with traditional Native American silversmithing techniques.",
     },
     {
       id: 5,
@@ -97,9 +107,12 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
       reviews: 15,
       isOnSale: true,
       tags: ["woven", "basket", "natural", "storage"],
-      story: "Traditional Zapotec weaving techniques using local palm fibers...",
-      description: "Set of three handwoven baskets perfect for storage and home decoration.",
-      fullStory: "Carlos learned traditional Zapotec weaving from his grandfather in the mountains of Oaxaca.",
+      story:
+        "Traditional Zapotec weaving techniques using local palm fibers...",
+      description:
+        "Set of three handwoven baskets perfect for storage and home decoration.",
+      fullStory:
+        "Carlos learned traditional Zapotec weaving from his grandfather in the mountains of Oaxaca.",
     },
     {
       id: 6,
@@ -113,12 +126,14 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
       reviews: 22,
       isOnSale: false,
       tags: ["ceramic", "painted", "colorful", "decorative"],
-      story: "Traditional Talavera pottery with vibrant hand-painted designs...",
-      description: "This beautiful ceramic vase features traditional Talavera patterns in vibrant blues and yellows.",
+      story:
+        "Traditional Talavera pottery with vibrant hand-painted designs...",
+      description:
+        "This beautiful ceramic vase features traditional Talavera patterns in vibrant blues and yellows.",
       fullStory:
         "Elena is a master of Talavera pottery, a tradition that dates back to the 16th century in Puebla, Mexico.",
     },
-  ]
+  ];
 
   const categories = [
     "all",
@@ -127,7 +142,7 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
     "Jewelry & Accessories",
     "Woodworking",
     "Home & Living",
-  ]
+  ];
 
   const priceRanges = [
     { value: "all", label: "All Prices" },
@@ -135,7 +150,7 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
     { value: "50-100", label: "$50 - $100" },
     { value: "100-200", label: "$100 - $200" },
     { value: "200+", label: "$200+" },
-  ]
+  ];
 
   const sortOptions = [
     { value: "featured", label: "Featured" },
@@ -143,7 +158,7 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
     { value: "price-high", label: "Price: High to Low" },
     { value: "rating", label: "Highest Rated" },
     { value: "newest", label: "Newest" },
-  ]
+  ];
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
@@ -153,42 +168,47 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
         searchQuery === "" ||
         product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.artisan.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+        product.tags.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
       // Category filter
-      const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
+      const matchesCategory =
+        selectedCategory === "all" || product.category === selectedCategory;
 
       // Price filter
       const matchesPrice = (() => {
-        if (priceRange === "all") return true
-        if (priceRange === "0-50") return product.price < 50
-        if (priceRange === "50-100") return product.price >= 50 && product.price < 100
-        if (priceRange === "100-200") return product.price >= 100 && product.price < 200
-        if (priceRange === "200+") return product.price >= 200
-        return true
-      })()
+        if (priceRange === "all") return true;
+        if (priceRange === "0-50") return product.price < 50;
+        if (priceRange === "50-100")
+          return product.price >= 50 && product.price < 100;
+        if (priceRange === "100-200")
+          return product.price >= 100 && product.price < 200;
+        if (priceRange === "200+") return product.price >= 200;
+        return true;
+      })();
 
-      return matchesSearch && matchesCategory && matchesPrice
-    })
+      return matchesSearch && matchesCategory && matchesPrice;
+    });
 
     // Sort products
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "price-low":
-          return a.price - b.price
+          return a.price - b.price;
         case "price-high":
-          return b.price - a.price
+          return b.price - a.price;
         case "rating":
-          return b.rating - a.rating
+          return b.rating - a.rating;
         case "newest":
-          return b.id - a.id
+          return b.id - a.id;
         default:
-          return 0
+          return 0;
       }
-    })
+    });
 
-    return filtered
-  }, [searchQuery, selectedCategory, priceRange, sortBy])
+    return filtered;
+  }, [searchQuery, selectedCategory, priceRange, sortBy]);
 
   return (
     <div>
@@ -220,13 +240,21 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
             <div className="flex items-center border border-border rounded-lg">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`p-2 ${
+                  viewMode === "grid"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 <Grid className="h-4 w-4" />
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-2 ${viewMode === "list" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`p-2 ${
+                  viewMode === "list"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 <List className="h-4 w-4" />
               </button>
@@ -239,7 +267,9 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
           <div className="bg-card border border-border rounded-lg p-4 mb-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Category</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Category
+                </label>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
@@ -254,7 +284,9 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Price Range</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Price Range
+                </label>
                 <select
                   value={priceRange}
                   onChange={(e) => setPriceRange(e.target.value)}
@@ -269,7 +301,9 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Sort By</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Sort By
+                </label>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
@@ -289,15 +323,18 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
         {/* Results Summary */}
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <span>
-            {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"} found
+            {filteredProducts.length}{" "}
+            {filteredProducts.length === 1 ? "product" : "products"} found
           </span>
-          {(searchQuery || selectedCategory !== "all" || priceRange !== "all") && (
+          {(searchQuery ||
+            selectedCategory !== "all" ||
+            priceRange !== "all") && (
             <button
               onClick={() => {
-                setSearchQuery("")
-                setSelectedCategory("all")
-                setPriceRange("all")
-                setSortBy("featured")
+                setSearchQuery("");
+                setSelectedCategory("all");
+                setPriceRange("all");
+                setSortBy("featured");
               }}
               className="text-primary hover:text-primary/80"
             >
@@ -308,7 +345,13 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
       </div>
 
       {/* Products Grid/List */}
-      <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "space-y-4"}>
+      <div
+        className={
+          viewMode === "grid"
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            : "space-y-4"
+        }
+      >
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}
@@ -326,13 +369,18 @@ const MarketplaceView = ({ onProductSelect, onAddToWishlist, isInWishlist }) => 
         <div className="text-center py-12">
           <div className="text-muted-foreground mb-4">
             <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No products found</h3>
-            <p>Try adjusting your search or filters to find what you're looking for.</p>
+            <h3 className="text-lg font-medium text-foreground mb-2">
+              No products found
+            </h3>
+            <p>
+              Try adjusting your search or filters to find what you're looking
+              for.
+            </p>
           </div>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default MarketplaceView
+export default MarketplaceView;

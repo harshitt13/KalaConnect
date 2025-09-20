@@ -1,17 +1,44 @@
+import { useState } from "react";
+import {
+  Palette,
+  LogOut,
+  ShoppingBag,
+  Bell,
+  User,
+  Menu,
+  X,
+} from "lucide-react";
 
-
-import { useState } from "react"
-import { Palette, LogOut, ShoppingBag, Bell, User, Menu, X } from "lucide-react"
-
-const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount = 0 }) => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false)
-  const [showNotifications, setShowNotifications] = useState(false)
+const Header = ({
+  userName,
+  userRole,
+  onLogout,
+  cartCount = 0,
+  notificationCount = 0,
+}) => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   const notifications = [
-    { id: 1, message: "Your order has been shipped!", time: "2 hours ago", type: "order" },
-    { id: 2, message: "New message from artisan Maya Patel", time: "1 day ago", type: "message" },
-    { id: 3, message: "Price drop on items in your wishlist", time: "2 days ago", type: "wishlist" },
-  ]
+    {
+      id: 1,
+      message: "Your order has been shipped!",
+      time: "2 hours ago",
+      type: "order",
+    },
+    {
+      id: 2,
+      message: "New message from artisan Maya Patel",
+      time: "1 day ago",
+      type: "message",
+    },
+    {
+      id: 3,
+      message: "Price drop on items in your wishlist",
+      time: "2 days ago",
+      type: "wishlist",
+    },
+  ];
 
   return (
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
@@ -20,33 +47,53 @@ const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount
           {/* Logo */}
           <div className="flex items-center">
             <Palette className="h-6 w-6 text-primary mr-2" />
-            <h1 className="text-xl font-bold text-foreground">KalaConnect AI</h1>
+            <h1 className="text-xl font-bold text-foreground">
+              KalaConnect AI
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {userRole === "buyer" && (
               <>
-                <a href="#marketplace" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#marketplace"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Marketplace
                 </a>
-                <a href="#artisans" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#artisans"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Artisans
                 </a>
-                <a href="#orders" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#orders"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   My Orders
                 </a>
               </>
             )}
             {userRole === "seller" && (
               <>
-                <a href="#dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#dashboard"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Dashboard
                 </a>
-                <a href="#products" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#products"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Products
                 </a>
-                <a href="#orders" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#orders"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Orders
                 </a>
               </>
@@ -85,7 +132,9 @@ const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount
               {showNotifications && (
                 <div className="absolute right-0 mt-2 w-80 bg-card border border-border rounded-lg shadow-lg z-50">
                   <div className="p-4 border-b border-border">
-                    <h3 className="font-semibold text-foreground">Notifications</h3>
+                    <h3 className="font-semibold text-foreground">
+                      Notifications
+                    </h3>
                   </div>
                   <div className="max-h-64 overflow-y-auto">
                     {notifications.map((notification) => (
@@ -93,8 +142,12 @@ const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount
                         key={notification.id}
                         className="p-4 border-b border-border hover:bg-muted/50 cursor-pointer"
                       >
-                        <p className="text-sm text-foreground">{notification.message}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{notification.time}</p>
+                        <p className="text-sm text-foreground">
+                          {notification.message}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {notification.time}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -111,7 +164,9 @@ const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount
             <div className="flex items-center space-x-2">
               <div className="hidden md:flex items-center space-x-2">
                 <User className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">Welcome, {userName}</span>
+                <span className="text-muted-foreground">
+                  Welcome, {userName}
+                </span>
               </div>
               <button
                 onClick={onLogout}
@@ -127,7 +182,11 @@ const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="md:hidden p-2 text-muted-foreground hover:text-foreground"
             >
-              {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {showMobileMenu ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
@@ -138,26 +197,44 @@ const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount
             <nav className="space-y-2">
               {userRole === "buyer" && (
                 <>
-                  <a href="#marketplace" className="block py-2 text-muted-foreground hover:text-foreground">
+                  <a
+                    href="#marketplace"
+                    className="block py-2 text-muted-foreground hover:text-foreground"
+                  >
                     Marketplace
                   </a>
-                  <a href="#artisans" className="block py-2 text-muted-foreground hover:text-foreground">
+                  <a
+                    href="#artisans"
+                    className="block py-2 text-muted-foreground hover:text-foreground"
+                  >
                     Artisans
                   </a>
-                  <a href="#orders" className="block py-2 text-muted-foreground hover:text-foreground">
+                  <a
+                    href="#orders"
+                    className="block py-2 text-muted-foreground hover:text-foreground"
+                  >
                     My Orders
                   </a>
                 </>
               )}
               {userRole === "seller" && (
                 <>
-                  <a href="#dashboard" className="block py-2 text-muted-foreground hover:text-foreground">
+                  <a
+                    href="#dashboard"
+                    className="block py-2 text-muted-foreground hover:text-foreground"
+                  >
                     Dashboard
                   </a>
-                  <a href="#products" className="block py-2 text-muted-foreground hover:text-foreground">
+                  <a
+                    href="#products"
+                    className="block py-2 text-muted-foreground hover:text-foreground"
+                  >
                     Products
                   </a>
-                  <a href="#orders" className="block py-2 text-muted-foreground hover:text-foreground">
+                  <a
+                    href="#orders"
+                    className="block py-2 text-muted-foreground hover:text-foreground"
+                  >
                     Orders
                   </a>
                 </>
@@ -167,7 +244,7 @@ const Header = ({ userName, userRole, onLogout, cartCount = 0, notificationCount
         )}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

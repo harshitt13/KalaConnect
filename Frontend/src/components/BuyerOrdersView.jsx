@@ -1,10 +1,16 @@
-
-
-import { useState } from "react"
-import { Package, Truck, CheckCircle, Clock, MessageCircle, Star, ArrowLeft } from "lucide-react"
+import { useState } from "react";
+import {
+  Package,
+  Truck,
+  CheckCircle,
+  Clock,
+  MessageCircle,
+  Star,
+  ArrowLeft,
+} from "lucide-react";
 
 const BuyerOrdersView = ({ onBack }) => {
-  const [activeTab, setActiveTab] = useState("all")
+  const [activeTab, setActiveTab] = useState("all");
 
   const orders = [
     {
@@ -45,43 +51,46 @@ const BuyerOrdersView = ({ onBack }) => {
       estimatedDelivery: "2024-01-28",
       shippingAddress: "123 Main St, New York, NY 10001",
     },
-  ]
+  ];
 
   const getStatusIcon = (status) => {
     switch (status) {
       case "processing":
-        return <Clock className="h-5 w-5 text-yellow-500" />
+        return <Clock className="h-5 w-5 text-yellow-500" />;
       case "shipped":
-        return <Truck className="h-5 w-5 text-blue-500" />
+        return <Truck className="h-5 w-5 text-blue-500" />;
       case "delivered":
-        return <CheckCircle className="h-5 w-5 text-orange-500" />
+        return <CheckCircle className="h-5 w-5 text-orange-500" />;
       default:
-        return <Package className="h-5 w-5 text-gray-500" />
+        return <Package className="h-5 w-5 text-gray-500" />;
     }
-  }
+  };
 
   const getStatusColor = (status) => {
     switch (status) {
       case "processing":
-        return "bg-yellow-100 text-yellow-800"
+        return "bg-yellow-100 text-yellow-800";
       case "shipped":
-        return "bg-blue-100 text-blue-800"
+        return "bg-blue-100 text-blue-800";
       case "delivered":
-        return "bg-orange-100 text-orange-800"
+        return "bg-orange-100 text-orange-800";
       default:
-        return "bg-gray-100 text-gray-800"
+        return "bg-gray-100 text-gray-800";
     }
-  }
+  };
 
   const filteredOrders = orders.filter((order) => {
-    if (activeTab === "all") return true
-    return order.status === activeTab
-  })
+    if (activeTab === "all") return true;
+    return order.status === activeTab;
+  });
 
   return (
     <div>
       <div className="flex items-center mb-6">
-        <button onClick={onBack} className="mr-4 p-2 text-muted-foreground hover:text-foreground transition-colors">
+        <button
+          onClick={onBack}
+          className="mr-4 p-2 text-muted-foreground hover:text-foreground transition-colors"
+        >
           <ArrowLeft className="h-5 w-5" />
         </button>
         <h1 className="text-3xl font-bold text-foreground">My Orders</h1>
@@ -92,9 +101,21 @@ const BuyerOrdersView = ({ onBack }) => {
         <nav className="-mb-px flex space-x-8">
           {[
             { key: "all", label: "All Orders", count: orders.length },
-            { key: "processing", label: "Processing", count: orders.filter((o) => o.status === "processing").length },
-            { key: "shipped", label: "Shipped", count: orders.filter((o) => o.status === "shipped").length },
-            { key: "delivered", label: "Delivered", count: orders.filter((o) => o.status === "delivered").length },
+            {
+              key: "processing",
+              label: "Processing",
+              count: orders.filter((o) => o.status === "processing").length,
+            },
+            {
+              key: "shipped",
+              label: "Shipped",
+              count: orders.filter((o) => o.status === "shipped").length,
+            },
+            {
+              key: "delivered",
+              label: "Delivered",
+              count: orders.filter((o) => o.status === "delivered").length,
+            },
           ].map((tab) => (
             <button
               key={tab.key}
@@ -114,16 +135,27 @@ const BuyerOrdersView = ({ onBack }) => {
       {/* Orders List */}
       <div className="space-y-6">
         {filteredOrders.map((order) => (
-          <div key={order.id} className="bg-card rounded-lg p-6 border border-border">
+          <div
+            key={order.id}
+            className="bg-card rounded-lg p-6 border border-border"
+          >
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
                 {getStatusIcon(order.status)}
                 <div>
-                  <h3 className="font-semibold text-foreground">Order {order.id}</h3>
-                  <p className="text-sm text-muted-foreground">Placed on {order.orderDate}</p>
+                  <h3 className="font-semibold text-foreground">
+                    Order {order.id}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Placed on {order.orderDate}
+                  </p>
                 </div>
               </div>
-              <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(order.status)}`}>
+              <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(
+                  order.status
+                )}`}
+              >
                 {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
               </span>
             </div>
@@ -135,9 +167,15 @@ const BuyerOrdersView = ({ onBack }) => {
                 className="w-16 h-16 object-cover rounded-lg"
               />
               <div className="flex-1">
-                <h4 className="font-medium text-foreground">{order.productName}</h4>
-                <p className="text-sm text-muted-foreground">by {order.artisan}</p>
-                <p className="text-sm text-muted-foreground">Quantity: {order.quantity}</p>
+                <h4 className="font-medium text-foreground">
+                  {order.productName}
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  by {order.artisan}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Quantity: {order.quantity}
+                </p>
               </div>
               <div className="text-right">
                 <p className="font-semibold text-foreground">${order.price}</p>
@@ -154,7 +192,9 @@ const BuyerOrdersView = ({ onBack }) => {
                 {order.trackingNumber && (
                   <>
                     <p className="text-muted-foreground">Tracking Number:</p>
-                    <p className="text-foreground font-mono">{order.trackingNumber}</p>
+                    <p className="text-foreground font-mono">
+                      {order.trackingNumber}
+                    </p>
                   </>
                 )}
               </div>
@@ -217,9 +257,13 @@ const BuyerOrdersView = ({ onBack }) => {
       {filteredOrders.length === 0 && (
         <div className="text-center py-12">
           <Package className="h-16 w-16 mx-auto mb-4 text-muted-foreground opacity-50" />
-          <h3 className="text-xl font-semibold text-foreground mb-2">No orders found</h3>
+          <h3 className="text-xl font-semibold text-foreground mb-2">
+            No orders found
+          </h3>
           <p className="text-muted-foreground mb-6">
-            {activeTab === "all" ? "You haven't placed any orders yet" : `No ${activeTab} orders`}
+            {activeTab === "all"
+              ? "You haven't placed any orders yet"
+              : `No ${activeTab} orders`}
           </p>
           <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
             Start Shopping
@@ -227,7 +271,7 @@ const BuyerOrdersView = ({ onBack }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default BuyerOrdersView
+export default BuyerOrdersView;
