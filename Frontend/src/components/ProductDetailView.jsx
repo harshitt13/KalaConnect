@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useState } from "react"
 import { ArrowLeft, MessageCircle, Check } from "lucide-react"

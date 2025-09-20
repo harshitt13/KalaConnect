@@ -1,4 +1,4 @@
-"use client"
+
 
 import { Heart, ShoppingBag, Trash2 } from "lucide-react"
 

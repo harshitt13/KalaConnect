@@ -1,4 +1,4 @@
-"use client"
+
 
 import { Heart, Star, MapPin, Eye } from "lucide-react"
 

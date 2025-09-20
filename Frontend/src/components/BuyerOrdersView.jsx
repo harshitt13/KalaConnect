@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useState } from "react"
 import { Package, Truck, CheckCircle, Clock, MessageCircle, Star, ArrowLeft } from "lucide-react"

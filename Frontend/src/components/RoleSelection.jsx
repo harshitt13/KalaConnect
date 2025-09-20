@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useState } from "react"
 import { Palette, ShoppingBag, Store, ArrowRight, Users, Sparkles, TrendingUp } from "lucide-react"

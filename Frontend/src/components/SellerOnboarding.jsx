@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useState } from "react"
 import { Palette, ArrowRight, ArrowLeft, Store, MapPin, Globe, Camera, Sparkles } from "lucide-react"
