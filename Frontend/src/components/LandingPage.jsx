@@ -72,7 +72,7 @@ const LandingPage = ({ onGetStarted }) => {
             <div className="flex items-center space-x-2">
               <Palette className="h-8 w-8 text-primary" />
               <h1 className="text-2xl font-bold text-foreground">
-                KalaConnect AI
+                KalaConnect
               </h1>
             </div>
 
@@ -308,7 +308,7 @@ const LandingPage = ({ onGetStarted }) => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Palette className="h-6 w-6" />
-                <h3 className="text-lg font-bold">KalaConnect AI</h3>
+                <h3 className="text-lg font-bold">KalaConnect</h3>
               </div>
               <p className="text-background/70">
                 Connecting artisans with the world, one creation at a time.
@@ -403,7 +403,7 @@ const LandingPage = ({ onGetStarted }) => {
             </div>
           </div>
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/70">
-            <p>&copy; 2024 KalaConnect AI. All rights reserved.</p>
+            <p>&copy; 2024 KalaConnect. All rights reserved.</p>
           </div>
         </div>
       </footer>

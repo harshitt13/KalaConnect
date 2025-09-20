@@ -45,11 +45,11 @@ const LoginPage = ({ onLogin }) => {
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary mr-2" />
               <h1 className="text-3xl font-bold text-foreground">
-                KalaConnect AI
+                KalaConnect
               </h1>
             </div>
             <p className="text-muted-foreground">
-              AI-Powered Marketplace for Local Artisans
+              Marketplace for Local Artisans
             </p>
           </div>
 
@@ -86,7 +86,7 @@ const LoginPage = ({ onLogin }) => {
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-orange-500 mr-2" />
               <h1 className="text-3xl font-bold text-orange-900">
-                KalaConnect AI
+                KalaConnect
               </h1>
             </div>
             <p className="text-orange-600">Welcome back!</p>
@@ -174,11 +174,11 @@ const LoginPage = ({ onLogin }) => {
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary mr-2" />
               <h1 className="text-3xl font-bold text-foreground">
-                KalaConnect AI
+                KalaConnect
               </h1>
             </div>
             <p className="text-muted-foreground">
-              AI-Powered Marketplace for Local Artisans
+              Marketplace for Local Artisans
             </p>
           </div>
 
@@ -259,7 +259,7 @@ const LoginPage = ({ onLogin }) => {
             <div className="flex items-center justify-center mb-4">
               <Palette className="h-8 w-8 text-primary mr-2" />
               <h1 className="text-3xl font-bold text-foreground">
-                KalaConnect AI
+                KalaConnect
               </h1>
             </div>
             <p className="text-muted-foreground">Sign up with Google</p>
@@ -298,7 +298,7 @@ const LoginPage = ({ onLogin }) => {
           <div className="flex items-center justify-center mb-4">
             <Palette className="h-8 w-8 text-primary mr-2" />
             <h1 className="text-3xl font-bold text-foreground">
-              KalaConnect AI
+              KalaConnect
             </h1>
           </div>
           <p className="text-muted-foreground">
@@ -411,3 +411,4 @@ const LoginPage = ({ onLogin }) => {
 };
 
 export default LoginPage;
+
