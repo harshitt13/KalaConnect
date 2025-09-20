@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react";
 import MarketplaceView from "./MarketplaceView";
 import ProductDetailView from "./ProductDetailView";

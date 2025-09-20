@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react";
 import LoginPage from "./components/LoginPage";
 import RoleSelection from "./components/RoleSelection";

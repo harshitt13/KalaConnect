@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react";
 import { Palette, ArrowRight, Phone, Mail } from "lucide-react";
 
@@ -297,9 +295,7 @@ const LoginPage = ({ onLogin }) => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <Palette className="h-8 w-8 text-primary mr-2" />
-            <h1 className="text-3xl font-bold text-foreground">
-              KalaConnect
-            </h1>
+            <h1 className="text-3xl font-bold text-foreground">KalaConnect</h1>
           </div>
           <p className="text-muted-foreground">
             {signupMethod === "mobile"
@@ -411,4 +407,3 @@ const LoginPage = ({ onLogin }) => {
 };
 
 export default LoginPage;
-
