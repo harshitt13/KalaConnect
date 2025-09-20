@@ -95,11 +95,25 @@
   }
 
   .bg-gradient-sunset {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff8c4d 25%, #ffb380 50%, #ffd3ad 75%, #ffead7 100%);
+    background: linear-gradient(
+      135deg,
+      #ff6b35 0%,
+      #ff8c4d 25%,
+      #ffb380 50%,
+      #ffd3ad 75%,
+      #ffead7 100%
+    );
   }
 
   .bg-gradient-warm {
-    background: linear-gradient(135deg, #fef7f0 0%, #ffead7 25%, #ffd3ad 50%, #ffb380 75%, #ff6b35 100%);
+    background: linear-gradient(
+      135deg,
+      #fef7f0 0%,
+      #ffead7 25%,
+      #ffd3ad 50%,
+      #ffb380 75%,
+      #ff6b35 100%
+    );
   }
 
   /* Text gradients */
@@ -144,7 +158,11 @@
   /* Modern card styles */
   .card-modern {
     @apply bg-white rounded-2xl shadow-lg border-0 p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-100/50 hover:-translate-y-2;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 250, 245, 0.9) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 250, 245, 0.9) 100%
+    );
     backdrop-filter: blur(10px);
   }
 

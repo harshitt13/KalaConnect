@@ -86,7 +86,7 @@ export default {
         "slide-up": "slideUp 0.3s ease-out",
         "bounce-subtle": "bounceSubtle 2s infinite",
         "pulse-peach": "pulsePeach 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "glow": "glow 2s ease-in-out infinite alternate",
+        glow: "glow 2s ease-in-out infinite alternate",
       },
       keyframes: {
         fadeIn: {
@@ -111,10 +111,14 @@ export default {
         },
       },
       backgroundImage: {
-        "gradient-peach": "linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8c4d 100%)",
-        "gradient-coral": "linear-gradient(135deg, #ff6b5a 0%, #ff8a75 50%, #ffb3a3 100%)",
-        "gradient-sunset": "linear-gradient(135deg, #ff6b35 0%, #ff8c4d 25%, #ffb380 50%, #ffd3ad 75%, #ffead7 100%)",
-        "gradient-warm": "linear-gradient(135deg, #fef7f0 0%, #ffead7 25%, #ffd3ad 50%, #ffb380 75%, #ff6b35 100%)",
+        "gradient-peach":
+          "linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8c4d 100%)",
+        "gradient-coral":
+          "linear-gradient(135deg, #ff6b5a 0%, #ff8a75 50%, #ffb3a3 100%)",
+        "gradient-sunset":
+          "linear-gradient(135deg, #ff6b35 0%, #ff8c4d 25%, #ffb380 50%, #ffd3ad 75%, #ffead7 100%)",
+        "gradient-warm":
+          "linear-gradient(135deg, #fef7f0 0%, #ffead7 25%, #ffd3ad 50%, #ffb380 75%, #ff6b35 100%)",
       },
     },
   },
